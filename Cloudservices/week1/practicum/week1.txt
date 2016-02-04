@@ -1,0 +1,21 @@
+Brons
+1. Hello World
+2. Console.log('Hello World')
+3. Nee
+
+1. Node Program.js /Applications/MAMP/htdocs/webs5/week1 js ==> Node Program.js PATH FileType
+2. Require File System, de Node File System module kan op die manier geimporteerd worden
+3. Alleen het pad waar gezocht moet worden, als de extension niet gedefinieerd is dan worden de files in de dir weergegeven
+4. Asynchronous callback
+5. Asynchronous callback
+
+Zilver
+1. Dan is de webpagina niet te vinden
+2. In dezelfde terminal is dit niet mogelijk, in een andere terminal is dat wel mogelijk
+3. Node Server.js is nog altijd actief, met het commando 'ps aux | grep Server.js' is te zien dat het proces nog actief is
+4. -
+5. Dan is het proces gekillt en is de server niet meer actief
+
+Goud
+1. npm search underscore (indexing) -> npm install underscore -> Node foo.js werkt
+2. In de folder waar ik met mijn terminal ben
