@@ -1,0 +1,27 @@
+extends layout
+
+
+block content
+  h1.
+    Users
+  ul
+    each user, i in users
+      li
+        a(href="mailto:#{user.username}")= user.username
+        #{user._id}
+        button(id="#{user._id}", class="btn") Delete
+
+  script.
+    var button = document.getElementById('btn');
+    $('.btn').on('click', function(){
+      // TODO: ajax
+      $.ajax({
+          url: '/users/'+this.id,
+          type: 'DELETE',
+          success: function(result) {
+              alert("succes");
+              // Do something with the result
+              window.location.href = "/users";
+          }
+      });
+    });
