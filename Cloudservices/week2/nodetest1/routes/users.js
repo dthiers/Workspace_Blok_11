@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   //res.send('respond with a resource');
   var db = req.db;
-  var collection = db.get('usercollection');
+  var collection = db.get('users');
   collection.find({}, {}, function(e, docs){
     res.render('users', {"users":docs});
   });
@@ -22,12 +22,13 @@ router.post('/', function(req, res){
   var db = req.db;
 
   var userName = req.body.username;
-  //var userEmail = req.body.useremail;
+  var userEmail = req.body.useremail;
 
-  var collection = db.get('usercollection');
+  var collection = db.get('users');
 
   collection.insert({
-    "username" : userName
+    "username" : userName,
+    "email" : userEmail
   },
   function(err, doc){
     if(err){
@@ -43,7 +44,7 @@ router.delete('/:user_id', function(req, res) {
 
   var id = req.params.user_id;
 
-  var collection = db.get('usercollection');
+  var collection = db.get('users');
   //
   collection.remove({
     _id: id

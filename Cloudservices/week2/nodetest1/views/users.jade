@@ -7,7 +7,7 @@ block content
   ul
     each user, i in users
       li
-        a(href="mailto:#{user.username}")= user.username
+        a(href="mailto:#{user.email}")= user.username
         #{user._id}
         button(id="#{user._id}", class="btn") Delete
 

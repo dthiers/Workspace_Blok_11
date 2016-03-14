@@ -1,0 +1,27 @@
+/* CSS belongs here */
+
+body {
+  margin: 0;
+  font-family:sans-serif;
+}
+
+h1 {
+  color: darkgrey;
+}
+
+.content {
+  margin: 0 auto;
+  width: 75%;
+  border: 1px solid lightgrey;
+}
+
+.pinkie {
+  color: pink;
+}
+
+.center {
+  width: 50%;
+  margin: 0 auto;
+
+  border: 1px solid lightgrey;
+}

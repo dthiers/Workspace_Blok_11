@@ -7,3 +7,10 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+
+var users = [
+  {"username":"Dion Thiers", "email":"dionthiers@gmail.com"},
+  {"username":"Fahiem Karsodimedjo", "email":"fskarsod@student.avans.nl"},
+  {"username":"Raymond Phua", "email":"r.phua@student.avans.nl"}
+]
