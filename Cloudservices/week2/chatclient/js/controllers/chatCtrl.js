@@ -1,4 +1,8 @@
-app.controller('chatCtrl', ['$scope', 'chatService', function(sc, chatService) {
+app.controller('chatCtrl', ['$scope', 'chatService', '$location', 'socketService', function(sc, chatService, $location) {
+
+  sc.$location = $location;
+
+  var socketService = socketService;
 
   chatService.getAllRooms({
     onSuccess: function(response){
@@ -8,5 +12,10 @@ app.controller('chatCtrl', ['$scope', 'chatService', function(sc, chatService) {
       console.log(response);
     }
   })
+
+  // Opens the correct room
+  sc.openRoom = function(room){
+    $location.path('/room/' + room._id);
+  }
 
 }])

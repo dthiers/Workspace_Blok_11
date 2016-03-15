@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 ng-if="activeUser">User: {{activeUser.username}}</h1>
+      <h1>Room: {{room.roomId}}</h1>
+      <!-- TODO: alle lines ophalen -->
+      <ul style="list-style: none">
+        <li ng-repeat="line in lines">
+          {{line.text}} -
+          <span style="margin-left: 20px; color: red; font-size: smaller"
+                ng-click="isDate(line)">
+                ({{getDate(line)}})
+          </span>
+        </li>
+      </ul>
+
+      <form ng-if="activeUser">
+        <div class="form-group">
+          <label for="newMessage">New text for chat:</label>
+          <input type="text" class="form-control" id="newMessage" ng-model="newLine" />
+        </div>
+
+
+        <button ng-click="addLineToRoom(activeUser._id, room.roomId, newLine); newLine = null" class="btn btn-default btn-right">Add line to chatroom</button>
+      </form>
+    </div>
+  </div>
+</div>

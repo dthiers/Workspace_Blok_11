@@ -74,14 +74,17 @@ router.get('/:id/users', function(req, res, next) {
 router.post('/:id/lines', function(req, res) {
   var db = req.db;
 
+  var userId = req.body.userId;
   var roomId = req.body.roomId;
   var line = req.body.line;
 
   var collection = db.get('lines');
 
   collection.insert({
+    "userId" : userId,
     "roomId" : roomId,
-    "text" : line
+    "text" : line,
+    "date" : new Date()
   }, function(err, doc) {
     if (err) {
       // If the insert fails

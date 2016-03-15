@@ -26,9 +26,19 @@ var app = angular.module('app', ['ngRoute'])
           }
         }
       })
-      .when('/chat', {
+      .when('/room', {
         templateUrl: 'partials/chat-partial.html',
         controller: 'chatCtrl'
+      })
+      .when('/room/:roomId', {
+        templateUrl: 'partials/room-partial.html',
+        controller: 'roomCtrl',
+        resolve: {
+          room: function($routeParams){
+            // TODO: promise
+            return angular.fromJson($routeParams);
+          }
+        }
       })
       .when('/user', {
         templateUrl: 'partials/user-partial.html',

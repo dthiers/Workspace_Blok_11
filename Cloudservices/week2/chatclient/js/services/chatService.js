@@ -60,6 +60,17 @@ app.factory('chatService', ['$http', function($http) {
       $http.get(link + 'rooms').then(
         options.onSuccess, options.onError
       )
+    },
+    // Get all lines for room with id
+    getLinesForRoom: function(roomId, options){
+      $http.get(link + 'rooms/' + roomId + '/lines').then(
+        options.onSuccess, options.onError
+      )
+    },
+    addLineToRoom: function(obj, options){
+      $http.post(link + 'rooms/' + obj.roomId + '/lines', angular.toJson(obj)).then(
+        options.onSuccess, options.onError
+      )
     }
   }
 
