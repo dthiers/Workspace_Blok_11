@@ -1,0 +1,44 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-4">
+
+      <button   ng-repeat="user in users"
+                ng-click="setUserActive(user)"
+                class="btn btn-default btn-block">{{user.username}}
+      </button>
+    </div>
+
+    <div class="col-md-8">
+      <!-- update user -->
+      <form>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input class="form-control" id="username" ng-model="activeUser.username" />
+        </div>
+        <button class="form-control" ng-click="changeUsername()">Change username</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1 ng-if="activeUser">Active user: <small>{{activeUser.username}}</small></h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <!-- update user -->
+      <form>
+        <div class="form-group">
+          <label for="username">New user</label>
+          <input class="form-control" id="username" ng-model="newUser.username" />
+        </div>
+        <button class="form-control" ng-click="insertUser(newUser.username)">Insert new user</button>
+      </form>
+    </div>
+  </div>
+
+</div>

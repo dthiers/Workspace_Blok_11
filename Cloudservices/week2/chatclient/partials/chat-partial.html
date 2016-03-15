@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class=".col-md-3 .col-md-offset-6; text-center">
-      <h1>{{title}} <small>{{user.username}}</small></h1>
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Rooms</h1>
+      <sub>Available chatrooms</sub>
+      <!-- TODO: alle rooms ophalen -->
+      <button class="btn btn-default btn-block"
+              ng-click=""
+              ng-repeat="room in rooms">
+              {{room.roomName}}
+      </button>
     </div>
-    <form>
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input class="form-control" id="username" ng-model="user.username" />
-      </div>
-      <button class="form-control" ng-click="changeUsername(user.username)">Change username</button>
-    </form>
   </div>
 </div>

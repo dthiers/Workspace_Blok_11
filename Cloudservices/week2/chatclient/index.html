@@ -15,10 +15,10 @@
   <body>
 
     <!-- This tag is used for the $routeProvider in app.js. Via AJAX calls the $routeProvider loads in partials -->
-    <ng-view></ng-view>
+    <ng-view style="padding:20px;"></ng-view>
 
     <!-- Bootstrap and jQuery -->
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="lib/jQuery/jquery-1.12.1.js"></script>
     <script src="lib/bootstrap/js/bootstrap.js"></script>
 
     <!-- Include scripts here such as services and controllers, app.js is loaded before the controllers and services. -->
@@ -28,6 +28,7 @@
     <script src="js/controllers/testCtrl.js"></script>
     <script src="js/controllers/newsCtrl.js"></script>
     <script src="js/controllers/chatCtrl.js"></script>
+    <script src="js/controllers/userCtrl.js"></script>
 
     <!-- Services -->
     <script src="js/services/testService.js"></script>

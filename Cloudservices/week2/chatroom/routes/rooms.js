@@ -15,6 +15,28 @@ router.get('/', function(req, res, next) {
   //res.render('rooms', { title: 'Rooms' });
 });
 
+// Insert room
+router.post('/', function(req, res, next) {
+  var db = req.db;
+  var collection = db.get('rooms');
+
+  var roomName = req.body.roomName;
+
+  collection.insert({
+    "roomName" : roomName
+  }, function(err, doc) {
+    if (err) {
+      // If the insert fails
+      res.send("there was a problem adding the information to the database");
+    } else {
+      // Else, redirect to room with id blabla to show the lines
+
+      // This should be a correct header containing the correct response message (status 400 or something like that)
+      res.send("Success!");
+    }
+  })
+})
+
 
 // Get room with id
 router.get('/:id', function(req, res, next) {

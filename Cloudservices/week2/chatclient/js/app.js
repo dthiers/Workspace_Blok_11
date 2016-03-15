@@ -30,4 +30,8 @@ var app = angular.module('app', ['ngRoute'])
         templateUrl: 'partials/chat-partial.html',
         controller: 'chatCtrl'
       })
+      .when('/user', {
+        templateUrl: 'partials/user-partial.html',
+        controller: 'userCtrl'
+      })
   })
