@@ -1,15 +1,13 @@
 var express = require('express');
 
-// Socket.io
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-
-io.on('connection', function(socket){
-  console.log('a user connected');
-});
+//
+// io.on('connection', function(socket){
+//   console.log('a user connected');
+// });
 
 // cors
 var cors = require('cors');
+var cors2 = require('./config/cors');
 
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -29,6 +27,7 @@ var rooms = require('./routes/rooms');
 var app = express();
 
 app.use(cors());
+app.use(cors2);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -57,6 +56,7 @@ app.use('/users', users);
 
 // rooms
 app.use('/rooms', rooms);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

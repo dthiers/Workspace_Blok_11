@@ -41,6 +41,7 @@ router.post('/', function(req, res) {
       if(err){
         res.send("Oops, something went wrong")
       } else {
+        //emit
         res.send("Success!");
       }
     })

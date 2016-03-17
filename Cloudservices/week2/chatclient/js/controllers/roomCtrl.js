@@ -1,4 +1,4 @@
-app.controller('roomCtrl', ['$scope', 'room', 'chatService', function(sc, room, chatService) {
+app.controller('roomCtrl', ['$scope', 'room', 'chatService', 'socket', function(sc, room, chatService, socket) {
   sc.room = room;
 
   if(window.localStorage.activeUser){
@@ -34,14 +34,52 @@ app.controller('roomCtrl', ['$scope', 'room', 'chatService', function(sc, room, 
         onError: function(response){
           console.log("het is niet gelukt");
         }
-      });
-
-    } else {
-      console.log("fuck that");
-    }
-
-    sc.newMessage = "";
+      })
+    } else { console.log("fuck that"); }
   }
+
+  // Socket listeners
+  // ================
+
+  socket.on('init', function (data) {
+    $scope.name = data.name;
+    $scope.users = data.users;
+  });
+
+  socket.on('send:message', function (message) {
+    $scope.messages.push(message);
+  });
+
+  socket.on('change:name', function (data) {
+    changeName(data.oldName, data.newName);
+  });
+
+  socket.on('user:join', function (data) {
+    $scope.messages.push({
+      user: 'chatroom',
+      text: 'User ' + data.name + ' has joined.'
+    });
+    $scope.users.push(data.name);
+  });
+
+  // add a message to the conversation when a user disconnects or leaves the room
+  socket.on('user:left', function (data) {
+    $scope.messages.push({
+      user: 'chatroom',
+      text: 'User ' + data.name + ' has left.'
+    });
+    var i, user;
+    for (i = 0; i < $scope.users.length; i++) {
+      user = $scope.users[i];
+      if (user === data.name) {
+        $scope.users.splice(i, 1);
+        break;
+      }
+    }
+  });
+
+  // Socket listeners
+  // ================
 
   sc.refresh = function(){
     chatService.getLinesForRoom(sc.room.roomId, {

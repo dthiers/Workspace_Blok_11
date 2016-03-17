@@ -1,4 +1,4 @@
-app.controller('chatCtrl', ['$scope', 'chatService', '$location', 'socketService', function(sc, chatService, $location) {
+app.controller('chatCtrl', ['$scope', 'chatService', '$location', 'socket', function(sc, chatService, $location) {
 
   sc.$location = $location;
 

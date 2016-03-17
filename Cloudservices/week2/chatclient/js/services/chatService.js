@@ -1,4 +1,4 @@
-app.factory('chatService', ['$http', function($http) {
+app.factory('chatService', 'socket', ['$http', function($http) {
 
   var link = 'http://localhost:3000/';
 
