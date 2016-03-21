@@ -5,25 +5,12 @@ var router = express.Router();
 
 
 // Bind basic functionality like errHandling to the router object
-router.use('/', function(req, res, next){
+router.use(function(req, res, next){
   // Bind a function to the response object
   res.return = function(){
     return "I'm here from the baseRouter";
   }
   next();
-}).all('*/api/', function(req, res, next){
-
-  // TODO: Deny access when trying to reach .api/*
-  // TODO: Deny access when trying to reach .api/*
-  // TODO: Deny access when trying to reach .api/*
-    // WAAROM WERKT DIT NIET?
-    // WAAROM WERKT DIT NIET?
-    // WAAROM WERKT DIT NIET?
-    // WAAROM WERKT DIT NIET?
-  res.send('require authentication');
-  // TODO: Deny access when trying to reach .api/*
-  // TODO: Deny access when trying to reach .api/*
-  // TODO: Deny access when trying to reach .api/*
 })
 
 module.exports = router;
