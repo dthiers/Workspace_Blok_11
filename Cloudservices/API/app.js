@@ -19,17 +19,9 @@ var mongooseInit = require('./model/mongooseInit');
 // Initalize the database
 mongooseInit(mongoose, config.db);
 
-var UserModel = require('./model/schemas/user');
-var newUser = new UserModel({
-  firstname: 'Firstname',
-  surname: 'Lastname',
-  email: 'Email',
-  password: 'Password'
-});
-
 // Routers
 var index = require('./routes/index');
-var users = require('./routes/users')(newUser);
+var users = require('./routes/users');
 var api = require('./routes/api');
 var hours = require('./routes/hours');
 var projects = require('./routes/projects');
