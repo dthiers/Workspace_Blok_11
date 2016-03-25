@@ -5,12 +5,38 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var api = require('./routes/api');
+/*
+====================== OWN STUFF =======================
+*/
 
-// Database (Mongoose)
+// database
 var mongoose = require('mongoose');
+
+// Config + database init
+var config = require('./config/config');
+var mongooseInit = require('./model/mongooseInit');
+
+// Initalize the database
+mongooseInit(mongoose, config.db);
+
+var UserModel = require('./model/schemas/user');
+var newUser = new UserModel({
+  firstname: 'Firstname',
+  surname: 'Lastname',
+  email: 'Email',
+  password: 'Password'
+});
+
+// Routers
+var index = require('./routes/index');
+var users = require('./routes/users')(newUser);
+var api = require('./routes/api');
+var hours = require('./routes/hours');
+var projects = require('./routes/projects');
+
+/*
+====================== OWN STUFF =======================
+*/
 
 var app = express();
 
@@ -29,12 +55,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Make DB accessibly to our router
 app.use(function(req, res, next){
   req.db = mongoose;
+
+  // TESTING PURPOSES
+  req.user = { username: "Dion Thiers"};
+  // TESTING PURPOSES
+
   next();
 })
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/api', api);
+app.use('/hours', hours);
+app.use('/projects', projects);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
