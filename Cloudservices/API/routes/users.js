@@ -1,11 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-var UserRepo = require('../model/repositories/userRepository');
-var userRepo = new UserRepo();
-
-var mw = require('../modules/basicMiddleware');
-
 /*
 ======== USER ENTITIES ===========
 - _id             (objectId from Mongo)
@@ -15,12 +10,20 @@ var mw = require('../modules/basicMiddleware');
 - email           (email format)
 - password        (special rules. Hashed, but how?)
 -
-*/
+**/
+
+module.exports = function(userRepo) {
+  //return function(req, res, next){
+    router.route('/')
+      .get(userRepo.getAllUsers);
+
+    return router;
+  //}
+};
 
 
-router.route('/')
-  .get(mw, userRepo.getAllUsers)
-  .post(userRepo.addUser);
+
+
 
 // router.route('/:id')
 //   .get(userRepo.getUserById)
@@ -58,5 +61,3 @@ router.route('/')
 // }).post(function(res, req) {
 //   req.send('/users/test');
 // })
-
-module.exports = router;

@@ -1,6 +1,10 @@
 // TODO: database requiren
+var User = require("mongoose").model('user');
+
 
 var userRepository = function(){
+
+  //console.log("========== " + model);
 
   var self = this;
 
@@ -19,7 +23,7 @@ var userRepository = function(){
     //
     // console.log(newUser);
 
-    res.json("userRpo");
+    res.json("userRepo");
   }
 
   self.addUser = function(req, res, next){

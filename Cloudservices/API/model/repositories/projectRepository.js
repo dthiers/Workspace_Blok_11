@@ -1,7 +1,6 @@
 // TODO: database requiren
 
 var projectRepository = function(){
-
   var self = this;
 
   // Get all users

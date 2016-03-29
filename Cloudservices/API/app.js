@@ -13,18 +13,26 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 // Config + database init
-var config = require('./config/config');
-var mongooseInit = require('./model/mongooseInit');
+require('./model/mongooseInit');
 
 // Initalize the database
-mongooseInit(mongoose, config.db);
+//console.log(mongoose.models.user);
+
+var UserRepo = require('./model/repositories/userRepository');
+var userRepo = new UserRepo();
+
+var ProjectRepo = require('./model/repositories/projectRepository');
+var projectRepo = new ProjectRepo();
+
+console.log(userRepo);
+
 
 // Routers
 var index = require('./routes/index');
-var users = require('./routes/users');
+var users = require('./routes/users')(userRepo);
 var api = require('./routes/api');
 var hours = require('./routes/hours');
-var projects = require('./routes/projects');
+var projects = require('./routes/projects')(projectRepo);
 
 /*
 ====================== OWN STUFF =======================

@@ -1,14 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
-var ProjectRepo = require('../model/repositories/projectRepository');
-var projectRepo = new ProjectRepo();
+
+module.exports = function(projectRepo) {
+  router.route('/')
+    .get(projectRepo.getAllProjects);
+
+  return router;
+}
 
 
-router.route('/')
-  .get(projectRepo.getAllProjects);
-
-module.exports = router;
 
 // module.exports = function(param){
 //

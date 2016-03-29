@@ -5,10 +5,8 @@ config.someConfig = {
 }
 
 config.db = {
-  connection: "mongodb://localhost:27017/timekeeper",
-  schemas: [
-    require('../model/schemas/user')
-  ]
+  connection: "mongodb://localhost:27017/timekeeper"
+
 }
 
 module.exports = config;
