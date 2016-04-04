@@ -1,6 +1,7 @@
 // TODO: database requiren
 
-var projectRepository = function(){
+var projectRepository = function(mongoose){
+  var Project = mongoose.model.('Project');
   var self = this;
 
   // Get all users

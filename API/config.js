@@ -5,7 +5,7 @@ config.someConfig = {
 }
 
 config.db = {
-  connection: "mongodb://localhost:27017/timekeeper"
+  connection: "mongodb://localhost:27017/timekeeper_test"
 
 }
 
