@@ -11,7 +11,7 @@ module.exports = function(mongoose){
   var userSchema = new Schema({
     firstname: { type: String },
     lastname: { type: String },
-    username: { type: String, required: true, index: { unique: true }},
+    username: { type: String, required: true, unique: true},
     password: { type: String, required: true},
     isAdmin: { type: Boolean, required: true}
   });

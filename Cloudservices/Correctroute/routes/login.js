@@ -13,6 +13,14 @@ module.exports = function(repository, passport){
     session: true
   }))
 
+  // Werkt niet vanuit de client
+  router.post('/client', passport.authenticate('local', {
+    successRedirect: '/profile',
+    failureRedirect: '/login',
+    failureFlash: false,
+    session: false
+  }))
+
   return router;
 
 }

@@ -1,16 +1,11 @@
-var config = {}
-
-config.someConfig = {
-  test: "Test"
-}
+var config = {};
 
 config.secret = {
-  secret: "secretSecret"
+  secret: "secretSecret",
+  jwt:    "pecretPecret"
 }
-
-config.db = {
+config.database = {
   connection: "mongodb://localhost:27017/timekeeper_test"
-
 }
 
 module.exports = config;

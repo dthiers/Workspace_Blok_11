@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <title>Admin panel API Timekeeper</title>
+    <!-- Angular, you need to include this BEFORE app.js -->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/bootstrap/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+  </head>
+  <body>
+
+    <!-- This tag is used for the $routeProvider in app.js. Via AJAX calls the $routeProvider loads in partials -->
+    <ng-view></ng-view>
+
+    <!-- Include scripts here such as services and controllers, app.js is loaded before the controllers and services. -->
+    <script src="js/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controllers/apiCtrl.js"></script>
+
+    <!-- Services -->
+    <script src="js/services/apiService.js"></script>
+
+  </body>
+</html>

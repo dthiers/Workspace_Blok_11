@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var auth = require('../config/passport')();
+
 /*
 ======== USER ENTITIES ===========
 - _id             (objectId from Mongo)
@@ -20,6 +22,8 @@ module.exports = function(userRepo) {
     router.route('/:id')
       .get(userRepo.getUserById);
 
+    router.route('/authenticate')
+      .post(userRepo.authenticateUser);
 
     return router;
 };

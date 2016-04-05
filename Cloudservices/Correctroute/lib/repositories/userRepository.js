@@ -1,3 +1,5 @@
+var jwt = require('jwt-simple');
+var config = require('../../config');
 
 var userRepository = function(mongoose){
   var User = mongoose.model('User');
@@ -27,6 +29,33 @@ var userRepository = function(mongoose){
     newUser.save(function(err) {
       if (err) { console.log(err)}
       res.send(200);
+    })
+  }
+
+
+  // Authenticate a user
+  self.authenticateUser = function(req, res, next){
+    User.findOne({
+      username: req.body.username
+    }, function(err, user) {
+      if(err) { return next(err); }
+      if(!user) {
+         res.return(404, "user not found")
+       }
+       else {
+         user.validPassword(req.body.password, function(err, isMatch) {
+           if(!err && isMatch){
+             // TODO: delete password + _id
+             var token = jwt.encode(user, config.secret.secret);
+             // Return token to user
+             res.send({ success: true, token: 'JWT ' + token });
+           }
+           else {
+             res.return(400, "Wrong password");
+           }
+         })
+       }
+
     })
   }
 }

@@ -23,6 +23,9 @@ module.exports = function(mongoose) {
 
   self.signupUser = function(req, res, next){
     console.log(req.body);
+    if(!req.body.username || !req.body.password){
+      res.send({ success: false, message: "No username or password" })
+    }
 
     var newUser = new User({
       firstname: req.body.firstname,
@@ -31,11 +34,13 @@ module.exports = function(mongoose) {
       password: req.body.password,
       isAdmin: req.body.isAdmin ? req.body.isAdmin : false
     })
-    newUser.save(function(err, user, rowsAffected){
-      if(err) { console.log('user wasnt save'); return next(err);}
-      console.log('affected rows: ' + rowsAffected);
-      console.log('User added: ' + user);
-      res.render('/profile');
+    newUser.save(function(err){
+      if(err) {
+        console.log('user wasnt saved'); return next(err);
+      }
+      else {
+        res.send({ success: true, message: "successfully added user" })
+      }
     });
 
   }
